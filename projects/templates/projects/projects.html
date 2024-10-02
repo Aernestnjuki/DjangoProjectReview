@@ -7,6 +7,7 @@
         <tr>
             <th>Title</th>
             <th>Description</th>
+            <th colspan="2"></th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,8 @@
             <tr>
                 <td><a href="{% url 'project' pk=project.id %}">{{ project.title }}</a></td>
                 <td>{{ project.description }}</td>
+                <td><a href="{% url 'update-project' pk=project.id %}">Edit</a></td>
+                <td><a href="{% url 'delete-project' pk=project.id %}">Delete</a></td>
             </tr>
         {% endfor %}
             
