@@ -5,18 +5,16 @@
 <table>
     <thead>
         <tr>
-            <th>ID</th>
             <th>Title</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         
-        {% for job in jobs %}
+        {% for project in projects %}
             <tr>
-                <td>{{ job.id }}</td>
-                <td>{{ job.title }}</td>
-                <td>{{ job.description }}</td>
+                <td><a href="{% url 'project' pk=project.id %}">{{ project.title }}</a></td>
+                <td>{{ project.description }}</td>
             </tr>
         {% endfor %}
             

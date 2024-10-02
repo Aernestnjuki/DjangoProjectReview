@@ -3,7 +3,20 @@
 {% block content %}
 <h1>Django single project</h1>
 
-{{ job.title }} <br>
-{{ job.description }}
+{{ project.title }} <br>
+{{ project.description }}
+
+<h2>project tags</h2>
+
+{% for tag in tags %}
+    <li>{{ tag }}</li>
+{% endfor %}
+    
+<h3>All reviews</h3>
+
+{% for review in reviews %}
+    <p>{{ review.body }}</p>
+{% endfor %}
+    
 
 {% endblock content %}

@@ -1,45 +1,27 @@
 from django.shortcuts import render
+from .models import Project
 
 # Create your views here.
 
-
-jobs = [
-    {
-        'id': '1',
-        'title': 'React.js developer',
-        'description': 'You will create user oriented front end apps'
-    },
-    {
-        'id': '2',
-        'title': 'Django developer',
-        'description': 'You will create backend with Django'
-    },
-    {
-        'id': '3',
-        'title': 'Flask developer',
-        'description': 'You will create backend with flask'
-    },
-    {
-        'id': '4',
-        'title': 'Node.js developer',
-        'description': 'You will create websites with node'
-    },
-]
-
 def projects(request):
+    all_projects = Project.objects.all()
     context = {
-        'jobs': jobs
+        'projects': all_projects
     }
     return render(request, 'projects/projects.html', context)
 
 def project(request, pk):
-    jobObj = None
+    one_project = Project.objects.get(id=pk)
 
-    for i in jobs:
-        if i['id'] == str(pk):
-            jobObj = i
+    # getting the project tags
+    tags = one_project.tags.all()
+
+    # getting the review
+    reviews = one_project.review_set.all()
 
     context = {
-        'job': jobObj
+        'project': one_project,
+        'tags': tags,
+        'reviews': reviews
     }
     return render(request, 'projects/singleProject.html', context)
