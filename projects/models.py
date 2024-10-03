@@ -7,7 +7,7 @@ class Project(models.Model):
     # owner =
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    featured_image = models.ImageField(default='default.png') # install pillow
+    featured_image = models.ImageField(default='default_img.png') #install pillow
     demo_link = models.CharField(max_length=255, null=True, blank=True)
     source_link = models.CharField(max_length=255, null=True, blank=True)
     vote_total = models.IntegerField(default=0)

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Logo</h1>
-
-    <a href="{% url 'projects' %}">Home</a>
-    <a href="{% url 'add-project' %}">Add Project</a>
-    <hr>
+    <header class="header">
+        <div class="container container--narrow">
+            <a href="/" class="header__logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" />
+            </a>
+            <nav class="header__nav">
+            <input type="checkbox" id="responsive-menu" />
+            <label for="responsive-menu" class="toggle-menu">
+                <span>Menu</span>
+                <div class="toggle-menu__lines"></div>
+            </label>
+            <ul class="header__menu">
+                <li class="header__menuItem"><a href="#">Developers</a></li>
+                <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
+                <li class="header__menuItem"><a href="{% url 'add-project' %}">Create Project</a></li>
+                <li class="header__menuItem"><a href="#">My Account</a></li>
+                <li class="header__menuItem"><a href="#" class="btn btn--sub">Login/Sign Up</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
 </body>
 </html>

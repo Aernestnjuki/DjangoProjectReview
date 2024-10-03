@@ -4,31 +4,61 @@
 
 {% block content %}
 
-<img style="width: 200px;" src="{% static 'images/programming.jpg' %}" alt="image">
+<main class="projects"></main>
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Search for <span>Projects</span></h2>
+        </div>
 
-<h1>Django projects</h1>
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Projects </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text"
+                placeholder="Search by Project Title" />
+            </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th colspan="2"></th>
-        </tr>
-    </thead>
-    <tbody>
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
         
-        {% for project in projects %}
-            <tr>
-                <td><a href="{% url 'project' pk=project.id %}">{{ project.title }}</a></td>
-                <td>{{ project.description }}</td>
-                <td><a href="{% url 'update-project' pk=project.id %}">Edit</a></td>
-                <td><a href="{% url 'delete-project' pk=project.id %}">Delete</a></td>
-            </tr>
-        {% endfor %}
-            
-    </tbody>
-</table>
+            {% for project in projects %}
+            <div class="column">
+                <div class="card project">
+                <a href="{% url 'project' pk=project.id %}" class="project">
+                    <img class="project__thumbnail" src="{{ project.featured_image.url }}" alt="project thumbnail" />
+                    <div class="card__body">
+                    <h3 class="project__title">{{ project.title }}</h3>
+                    <p><a class="project__author" href="">By Aernest Njuki</a></p>
+                    <p class="project--rating">
+                        <span style="font-weight: bold;">{{ project.vote_ration }} %</span> Postitive
+                        Feedback ({{ project.vote_total }} Votes)
+                    </p>
+                    <div class="project__tags">
+                        
+                        {% for tag in project.tags.all %}
+                            <span class="tag tag--pill tag--main"></span>
+                                <small>{{ tag.name }}</small>
+                            </span>
+                        {% endfor %}
+                    </div>
+                    </div>
+                </a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+      </div>
+    </section>
+  </main>
 {% endblock content %}
     
 
