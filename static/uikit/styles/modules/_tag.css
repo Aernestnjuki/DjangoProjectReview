@@ -14,10 +14,10 @@
   cursor: pointer;
 }
 
-.tag:not(:last-child) {
+/* .tag:not(:last-child) {
   margin-right: 0.25rem;
   margin-bottom: 0.75rem;
-}
+} */
 
 .tag > small {
   color: var(--color-white);
